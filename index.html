@@ -5,23 +5,23 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>QT Web App</title>
 
-  <!-- Bootstrap 5 (for quick UI polish) -->
+  <!-- Bootstrap 5 for quick UI polish -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
   />
-
   <link rel="stylesheet" href="style.css"/>
 </head>
 <body class="bg-light">
   <div class="container py-4">
+    <!-- Menu -->
     <div id="menu" class="mb-4">
       <button class="btn btn-outline-primary me-2" onclick="showHome()">Home</button>
       <button class="btn btn-outline-secondary me-2" onclick="showPlanManager()">Plan Manager</button>
       <button class="btn btn-outline-success" onclick="showCalendar()">Calendar</button>
     </div>
 
-    <!-- HOME SCREEN -->
+    <!-- HOME -->
     <div id="home" class="screen">
       <div class="card mb-4">
         <div class="card-body">
@@ -30,7 +30,7 @@
         </div>
       </div>
 
-      <!-- Typing Check -->
+      <!-- Typing -->
       <div class="mb-4">
         <h6>Type the Verse ✍️</h6>
         <textarea id="typedVerse" class="form-control" rows="2"
@@ -39,7 +39,7 @@
         <div id="typingMessage" class="mt-2"></div>
       </div>
 
-      <!-- Read-Aloud Recorder -->
+      <!-- Read-Aloud -->
       <div class="mb-4">
         <h6>Read Aloud 🎤</h6>
         <button id="recordBtn" class="btn btn-outline-danger me-2">Start Recording</button>
@@ -63,14 +63,13 @@
         <div class="card-body">
           <h5 class="card-title">Plan Manager</h5>
           <div class="row g-2 mb-3">
-            <div class="col">
+            <div class="col-md-3">
               <label for="planStartDate" class="form-label">Start Date</label>
               <input type="date" id="planStartDate" class="form-control"/>
             </div>
-            <div class="col">
+            <div class="col-md-3">
               <label for="planBook" class="form-label">Book</label>
               <select id="planBook" class="form-select">
-                <!-- You could populate this dynamically -->
                 <option>John</option>
                 <option>Psalm</option>
                 <option>Romans</option>
@@ -80,27 +79,30 @@
                 <option>Matthew</option>
               </select>
             </div>
-            <div class="col">
-              <label for="planStartChapter" class="form-label">Start Chapter</label>
-              <input type="number" id="planStartChapter" class="form-control" min="1" value="1"/>
+            <div class="col-md-2">
+              <label for="planStartVerse" class="form-label">Start Verse</label>
+              <input type="text" id="planStartVerse" class="form-control" placeholder="1:1"/>
             </div>
-            <div class="col">
-              <label for="planDuration" class="form-label">Duration (days)</label>
+            <div class="col-md-2">
+              <label for="planEndVerse" class="form-label">End Verse</label>
+              <input type="text" id="planEndVerse" class="form-control" placeholder="1:20"/>
+            </div>
+            <div class="col-md-2">
+              <label for="planDuration" class="form-label">Days</label>
               <input type="number" id="planDuration" class="form-control" min="1" value="7"/>
             </div>
           </div>
-          <button class="btn btn-success" onclick="generatePlan()">Generate Plan</button>
-
-          <h6 class="mt-4">My QT Plan</h6>
+          <button class="btn btn-success mb-3" onclick="generatePlan()">Generate Plan</button>
+          <h6>My QT Plan</h6>
           <ul id="planList" class="list-group"></ul>
         </div>
       </div>
     </div>
 
-    <!-- CALENDAR VIEW -->
+    <!-- CALENDAR -->
     <div id="calendarView" class="screen" style="display:none;">
       <h5>Calendar Tracker</h5>
-      <div id="calendar" class="d-flex flex-wrap mt-3"></div>
+      <div id="calendar" class="d-flex flex-wrap mt-3 gap-2"></div>
       <div id="dayDetails" class="mt-4"></div>
     </div>
   </div>
