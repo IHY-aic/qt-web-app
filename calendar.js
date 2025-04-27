@@ -1,4 +1,3 @@
-<!-- calendar.js -->
 function renderCalendar() {
   const cal     = document.getElementById('calendar');
   const details = document.getElementById('dayDetails');
@@ -12,9 +11,12 @@ function renderCalendar() {
     const cell = document.createElement('div');
     cell.className = 'day';
     cell.innerText = day.date.split('-').slice(1).join('/');
+
     if (prog[day.date]?.completed) cell.classList.add('completed');
-    else if (new Date(day.date) < new Date().setHours(0,0,0,0)) cell.classList.add('missed');
-    else cell.classList.add('pending');
+    else if (new Date(day.date) < new Date().setHours(0,0,0,0))
+      cell.classList.add('missed');
+    else
+      cell.classList.add('pending');
 
     cell.onclick = () => {
       const typed = localStorage.getItem(`typed_${day.date}`) || '—';
@@ -25,9 +27,9 @@ function renderCalendar() {
           <p><strong>Verse:</strong> ${day.verse}</p>
           <p><strong>Typed:</strong> ${typed}</p>
           <p><strong>Reflection:</strong> ${refl}</p>
-        </div></div>
-      `;
+        </div></div>`;
     };
+
     cal.appendChild(cell);
   });
 }
