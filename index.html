@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>QT Web App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div id="menu">
+      <button onclick="showHome()">Home</button>
+      <button onclick="showPlanManager()">Plan Manager</button>
+      <button onclick="showCalendar()">Calendar</button>
+    </div>
+
+    <div id="home" class="screen">
+      <h2>Today's Verse</h2>
+      <div id="verse">Loading verse...</div>
+
+      <h3>Type the Verse ✍️</h3>
+      <textarea id="typedVerse" placeholder="Type the verse from memory..."></textarea>
+      <button onclick="saveTypedVerse()">Save Typed Verse</button>
+
+      <h3>Reflect 📝</h3>
+      <textarea id="reflection" placeholder="What is God saying to you today?"></textarea>
+      <button onclick="saveReflection()">Save Reflection</button>
+
+      <div id="savedMessage" style="margin-top: 20px; color: green;"></div>
+    </div>
+
+    <div id="planManager" class="screen" style="display:none;">
+      <h2>Plan Manager</h2>
+      <input type="date" id="planDate">
+      <input type="text" id="planVerse" placeholder="e.g., John 3:16">
+      <button onclick="addPlan()">Add to Plan</button>
+      <h3>My QT Plan</h3>
+      <ul id="planList"></ul>
+    </div>
+
+    <div id="calendarView" class="screen" style="display:none;">
+      <h2>Calendar Tracker</h2>
+      <div id="calendar"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script src="calendar.js"></script>
+</body>
+</html>
