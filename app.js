@@ -121,5 +121,44 @@ function loadPlan() {
   });
 }
 
+// ———— READ-ALOUD RECORDING ———— //
+let mediaRecorder, recordedChunks = [];
+
+function initRecorder() {
+  navigator.mediaDevices
+    .getUserMedia({ audio: true })
+    .then(stream => {
+      mediaRecorder = new MediaRecorder(stream);
+      mediaRecorder.ondataavailable = e => recordedChunks.push(e.data);
+      mediaRecorder.onstop = () => {
+        const blob = new Blob(recordedChunks, { type: 'audio/webm' });
+        recordedChunks = [];
+        const url = URL.createObjectURL(blob);
+        const audio = document.getElementById('audioPlayback');
+        audio.src = url;
+        audio.style.display = 'block';
+      };
+    })
+    .catch(console.error);
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  initRecorder();
+  const recBtn = document.getElementById('recordBtn');
+  const stopBtn = document.getElementById('stopBtn');
+
+  recBtn.onclick = () => {
+    mediaRecorder.start();
+    recBtn.disabled = true;
+    stopBtn.disabled = false;
+  };
+  stopBtn.onclick = () => {
+    mediaRecorder.stop();
+    stopBtn.disabled = true;
+    recBtn.disabled = false;
+  };
+});
+
+
 // initialize
 fetchVerse();
