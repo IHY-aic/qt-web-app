@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -62,11 +61,21 @@
         <div class="card-body">
           <h5 class="card-title">Plan Manager</h5>
           <div class="row g-2 mb-3">
-            <div class="col-md-3">
+            <div class="col-md-4">
               <label for="planStartDate" class="form-label">Start Date</label>
               <input type="date" id="planStartDate" class="form-control"/>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
+              <label for="planEndDate" class="form-label">End Date</label>
+              <input type="date" id="planEndDate" class="form-control"/>
+            </div>
+            <div class="col-md-4">
+              <label for="versesPerDay" class="form-label">Verses/Day</label>
+              <input type="number" id="versesPerDay" class="form-control" min="1" value="10"/>
+            </div>
+          </div>
+          <div class="row g-2 mb-3">
+            <div class="col-md-4">
               <label for="planBook" class="form-label">Book</label>
               <select id="planBook" class="form-select">
                 <option>John</option>
@@ -78,30 +87,9 @@
                 <option>Matthew</option>
               </select>
             </div>
-            <div class="col-md-2">
+            <div class="col-md-4">
               <label for="planChapter" class="form-label">Chapter</label>
               <input type="number" id="planChapter" class="form-control" min="1" value="1"/>
-            </div>
-            <div class="col-md-2">
-              <label for="planStartVerse" class="form-label">From Verse</label>
-              <input type="number" id="planStartVerse" class="form-control" min="1" value="1"/>
-            </div>
-            <div class="col-md-2">
-              <label for="planEndVerse" class="form-label">To Verse</label>
-              <input type="number" id="planEndVerse" class="form-control" min="1" value="10"/>
-            </div>
-          </div>
-          <div class="row g-2 mb-3">
-            <div class="col-md-4">
-              <label for="versesPerDay" class="form-label">Verses/Day</label>
-              <input type="number" id="versesPerDay" class="form-control" min="1" value="10"/>
-            </div>
-            <div class="col-md-4">
-              <label for="intervalType" class="form-label">Interval</label>
-              <select id="intervalType" class="form-select">
-                <option value="day">Daily</option>
-                <option value="week">Weekly</option>
-              </select>
             </div>
             <div class="col-md-4 align-self-end">
               <button class="btn btn-success w-100" onclick="generatePlan()">Generate Plan</button>
