@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>QT Web App</title>
 
-  <!-- Bootstrap 5 for quick UI polish -->
+  <!-- Bootstrap 5 for polished UI -->
   <link
     href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
     rel="stylesheet"
@@ -33,8 +34,7 @@
       <!-- Typing -->
       <div class="mb-4">
         <h6>Type the Verse ✍️</h6>
-        <textarea id="typedVerse" class="form-control" rows="2"
-          placeholder="Type the verse exactly…"></textarea>
+        <textarea id="typedVerse" class="form-control" rows="2" placeholder="Type the verse exactly…"></textarea>
         <button class="btn btn-primary mt-2" onclick="saveTypedVerse()">Save Typed Verse</button>
         <div id="typingMessage" class="mt-2"></div>
       </div>
@@ -50,8 +50,7 @@
       <!-- Reflection -->
       <div class="mb-4">
         <h6>Reflect 📝</h6>
-        <textarea id="reflection" class="form-control" rows="3"
-          placeholder="What is God saying to you today?"></textarea>
+        <textarea id="reflection" class="form-control" rows="3" placeholder="What is God saying to you today?"></textarea>
         <button class="btn btn-primary mt-2" onclick="saveReflection()">Save Reflection</button>
         <div id="savedMessage" class="mt-2 text-success"></div>
       </div>
@@ -80,19 +79,34 @@
               </select>
             </div>
             <div class="col-md-2">
-              <label for="planStartVerse" class="form-label">Start Verse</label>
-              <input type="text" id="planStartVerse" class="form-control" placeholder="1:1"/>
+              <label for="planChapter" class="form-label">Chapter</label>
+              <input type="number" id="planChapter" class="form-control" min="1" value="1"/>
             </div>
             <div class="col-md-2">
-              <label for="planEndVerse" class="form-label">End Verse</label>
-              <input type="text" id="planEndVerse" class="form-control" placeholder="1:20"/>
+              <label for="planStartVerse" class="form-label">From Verse</label>
+              <input type="number" id="planStartVerse" class="form-control" min="1" value="1"/>
             </div>
             <div class="col-md-2">
-              <label for="planDuration" class="form-label">Days</label>
-              <input type="number" id="planDuration" class="form-control" min="1" value="7"/>
+              <label for="planEndVerse" class="form-label">To Verse</label>
+              <input type="number" id="planEndVerse" class="form-control" min="1" value="10"/>
             </div>
           </div>
-          <button class="btn btn-success mb-3" onclick="generatePlan()">Generate Plan</button>
+          <div class="row g-2 mb-3">
+            <div class="col-md-4">
+              <label for="versesPerDay" class="form-label">Verses/Day</label>
+              <input type="number" id="versesPerDay" class="form-control" min="1" value="10"/>
+            </div>
+            <div class="col-md-4">
+              <label for="intervalType" class="form-label">Interval</label>
+              <select id="intervalType" class="form-select">
+                <option value="day">Daily</option>
+                <option value="week">Weekly</option>
+              </select>
+            </div>
+            <div class="col-md-4 align-self-end">
+              <button class="btn btn-success w-100" onclick="generatePlan()">Generate Plan</button>
+            </div>
+          </div>
           <h6>My QT Plan</h6>
           <ul id="planList" class="list-group"></ul>
         </div>
