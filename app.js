@@ -48,7 +48,9 @@ function saveTypedVerse() {
       currentVerseText +
       '</em>';
   }
-  markDayCompleted(new Date().toISOString().split('T')[0]);
+  const today = new Date().toISOString().split('T')[0];
+  localStorage.setItem(`typed_${today}`, typed);
+  markDayCompleted(today);
 }
 
 // — REFLECTION —
